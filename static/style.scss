@@ -1,0 +1,49 @@
+@use 'sass:color';
+$primary-color: #333;
+$card-bg: #f9f9f9;
+$border-radius: 8px;
+
+
+@mixin responsive-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.product-card {
+  background-color: $card-bg;
+  border-radius: $border-radius;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  font-family: sans-serif;
+
+  &__image {
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-radius: $border-radius;
+
+    img {
+      @include responsive-image;
+      transition: transform 0.3s ease;
+
+      .product-card:hover & {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__title {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    color: $primary-color;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 0.9rem;
+    color: color.adjust($primary-color, $lightness: 20%);
+    line-height: 1.5;
+  }
+}
